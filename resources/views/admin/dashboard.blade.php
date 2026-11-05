@@ -1,0 +1,8 @@
+@extends('layouts.admin')
+@section('title','Quản trị | Bookhub')
+@section('admin-content')
+<div class="d-flex justify-content-between align-items-center mb-4"><div><span class="eyebrow">BOOKHUB CONTROL CENTER</span><h1 class="admin-title">Tổng quan quản trị</h1></div><span class="badge text-bg-dark px-3 py-2">ADMIN</span></div>
+<div class="row g-3 mb-5">@foreach([['Tổng số sách',$stats['books'],'▤'],['Bạn đọc',$stats['users'],'♙'],['Đơn mượn / thuê',$stats['orders'],'▣'],['Chờ duyệt',$stats['pending'],'◷']] as $stat)<div class="col-6 col-lg-3"><div class="stat-card"><span>{{ $stat[2] }}</span><small>{{ $stat[0] }}</small><strong>{{ number_format($stat[1]) }}</strong></div></div>@endforeach</div>
+<div class="d-flex flex-wrap gap-2 mb-4"><a href="{{ route('admin.books.index') }}" class="btn btn-primary">Quản lý sách</a><a href="{{ route('admin.categories.index') }}" class="btn btn-outline-dark">Thể loại</a><a href="{{ route('admin.authors.index') }}" class="btn btn-outline-dark">Tác giả</a></div>
+<div class="card border-0 shadow-sm rounded-4"><div class="card-body p-4"><h5 class="mb-3">Đơn mượn gần đây</h5><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Mã đơn</th><th>Bạn đọc</th><th>Ngày tạo</th><th>Loại</th><th>Trạng thái</th></tr></thead><tbody>@forelse($recentOrders as $order)<tr><td class="fw-semibold">{{ $order->order_code }}</td><td>{{ $order->user->name }}</td><td>{{ $order->order_date?->format('d/m/Y H:i') }}</td><td>{{ $order->transaction_type === 'borrow' ? 'Mượn' : 'Thuê' }}</td><td><span class="badge text-bg-light">{{ $order->status }}</span></td></tr>@empty<tr><td colspan="5" class="text-center text-muted py-4">Chưa có đơn mượn sách.</td></tr>@endforelse</tbody></table></div></div></div>
+@endsection

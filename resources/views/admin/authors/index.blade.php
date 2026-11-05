@@ -1,0 +1,6 @@
+@extends('layouts.admin')
+@section('title','Tác giả | Bookhub')
+@section('admin-content')
+<div class="d-flex justify-content-between align-items-center mb-4"><div><span class="eyebrow">AUTHOR DIRECTORY</span><h1 class="admin-title">Tác giả</h1></div><a class="btn btn-primary rounded-pill" href="{{ route('admin.authors.create') }}">＋ Thêm tác giả</a></div>
+<div class="card border-0 shadow-sm rounded-4"><div class="table-responsive"><table class="table align-middle mb-0"><thead class="table-light"><tr><th>Tên tác giả</th><th>Tiểu sử</th><th>Số sách</th><th class="text-end">Thao tác</th></tr></thead><tbody>@forelse($authors as $author)<tr><td class="fw-semibold">{{ $author->name }}</td><td>{{ Str::limit($author->biography,100) }}</td><td>{{ $author->books_count }}</td><td class="text-end text-nowrap"><a class="btn btn-sm btn-outline-primary" href="{{ route('admin.authors.edit',$author) }}">Sửa</a> <form class="d-inline" method="POST" action="{{ route('admin.authors.destroy',$author) }}" onsubmit="return confirm('Xóa tác giả này?')">@csrf @method('DELETE')<button class="btn btn-sm btn-outline-danger">Xóa</button></form></td></tr>@empty<tr><td colspan="4" class="text-center py-4">Chưa có tác giả.</td></tr>@endforelse</tbody></table></div><div class="p-3">{{ $authors->links() }}</div></div>
+@endsection

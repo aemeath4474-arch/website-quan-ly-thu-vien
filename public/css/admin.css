@@ -1,0 +1,24 @@
+/* Bookhub admin responsive layout */
+.admin-layout{min-height:65vh;background:#f7f8f5}
+.admin-sidebar{background:#fff;border:1px solid #e8e9e2;border-radius:16px;padding:18px;position:sticky;top:88px;max-height:calc(100vh - 110px);overflow-y:auto}
+.admin-sidebar a{display:flex;align-items:center;gap:10px;text-decoration:none;color:#59635b;padding:11px 12px;border-radius:9px;font-weight:600;font-size:.9rem;margin:3px 0;transition:background .15s ease,color .15s ease}
+.admin-sidebar a span{width:22px;text-align:center;font-size:1.05rem}
+.admin-sidebar a:hover,.admin-sidebar a.active{background:#eaf0e9;color:#315c45}
+.admin-sidebar-divider{height:1px;background:#e8e9e2;margin:12px 4px}
+.admin-main{min-width:0}
+.admin-title{font:700 clamp(1.55rem,3vw,2.1rem) 'Playfair Display',serif;margin:8px 0}
+.admin-filter .form-control,.admin-filter .form-select{padding:11px;border-color:#e5e8e1}
+.admin-book-thumb{width:44px;height:55px;border-radius:6px;background:#edf0e9;display:grid;place-items:center;overflow:hidden;flex-shrink:0}
+.admin-book-thumb img{width:100%;height:100%;object-fit:cover}
+.admin-book-thumb span{font-size:20px}
+.admin-layout .table{margin-bottom:0;vertical-align:middle}
+.admin-layout .table th{font-size:.76rem;text-transform:uppercase;letter-spacing:.45px;color:#73796f;white-space:nowrap}
+.admin-layout .table td{font-size:.88rem}
+.admin-layout .table td,.admin-layout .table th{padding:.85rem .9rem}
+.admin-layout .form-control,.admin-layout .form-select{border-color:#e1e5dc;padding:10px 12px;min-width:0}
+.admin-layout .form-label{font-weight:600;font-size:.9rem}
+.admin-layout .card{min-width:0}
+.admin-layout .pagination{flex-wrap:wrap;gap:3px}
+.review-comment-cell{min-width:220px;max-width:420px;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:991.98px){.admin-sidebar{position:static;max-height:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.admin-sidebar>div:first-child{grid-column:1/-1}.admin-sidebar-divider{display:none}.admin-main{width:100%}}
+@media(max-width:575.98px){.admin-sidebar{grid-template-columns:1fr;padding:12px}.admin-sidebar a{padding:9px 10px}.admin-layout{padding-left:12px!important;padding-right:12px!important}.admin-layout .table td,.admin-layout .table th{padding:.7rem .65rem}}

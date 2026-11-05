@@ -1,0 +1,6 @@
+@extends('layouts.admin')
+@section('title','Thể loại | Bookhub')
+@section('admin-content')
+<div class="d-flex justify-content-between align-items-center mb-4"><div><span class="eyebrow">BOOK CLASSIFICATION</span><h1 class="admin-title">Thể loại sách</h1></div><a class="btn btn-primary rounded-pill" href="{{ route('admin.categories.create') }}">＋ Thêm thể loại</a></div>
+<div class="card border-0 shadow-sm rounded-4"><div class="table-responsive"><table class="table align-middle mb-0"><thead class="table-light"><tr><th>Tên thể loại</th><th>Mô tả</th><th>Số sách</th><th class="text-end">Thao tác</th></tr></thead><tbody>@forelse($categories as $category)<tr><td class="fw-semibold">{{ $category->name }}</td><td>{{ Str::limit($category->description,90) }}</td><td>{{ $category->books_count }}</td><td class="text-end text-nowrap"><a class="btn btn-sm btn-outline-primary" href="{{ route('admin.categories.edit',$category) }}">Sửa</a> <form class="d-inline" method="POST" action="{{ route('admin.categories.destroy',$category) }}" onsubmit="return confirm('Xóa thể loại này?')">@csrf @method('DELETE')<button class="btn btn-sm btn-outline-danger">Xóa</button></form></td></tr>@empty<tr><td colspan="4" class="text-center py-4">Chưa có thể loại.</td></tr>@endforelse</tbody></table></div><div class="p-3">{{ $categories->links() }}</div></div>
+@endsection
